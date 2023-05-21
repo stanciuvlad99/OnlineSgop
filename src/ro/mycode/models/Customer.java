@@ -1,6 +1,8 @@
 package ro.mycode.models;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class Customer extends User {
 
@@ -10,12 +12,19 @@ public class Customer extends User {
 
     private boolean isBlocked;
 
-    public Customer(int id, String email, String password, String fullName, int phone, String type,
+    public Customer(int id, String email, String password, String fullName, int phone,
                     LocalDate lastOrderDate, LocalDate registerDate, boolean isBlocked) {
-        super(id, email, password, fullName, phone, type);
+        super(id, email, password, fullName, phone, "customer");
         this.lastOrderDate = lastOrderDate;
         this.registerDate = registerDate;
         this.isBlocked = isBlocked;
+    }
+
+    public Customer(String text){
+        super(text);
+        this.lastOrderDate=LocalDate.parse(text.split(",")[6]);
+        this.registerDate=LocalDate.parse(text.split(",")[7]);
+        this.isBlocked=Boolean.parseBoolean(text.split(",")[8]);
     }
 
     @Override
