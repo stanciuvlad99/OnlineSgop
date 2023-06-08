@@ -1,0 +1,2 @@
+1,1,1,Bucuresti,order1@email.com,Constanta,2023-05-12,transporting
+2,2,2,Oradea,order2@email.com,Brasov,2023-01-04,canceled

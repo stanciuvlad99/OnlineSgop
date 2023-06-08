@@ -17,14 +17,23 @@ public class Products {
         this.weight = weight;
     }
 
+    public Products(String text){
+        String []split=text.split(",");
+        this.id=Integer.parseInt(split[0]);
+        this.sku=split[1];
+        this.name=split[2];
+        this.price=Integer.parseInt(split[3]);
+        this.weight=Integer.parseInt(split[4]);
+    }
+
     @Override
     public String toString() {
         String text = "";
-        text += "products id " + id;
-        text += "sku " + sku;
-        text += "name " + name;
-        text += "price " + price;
-        text += "weight " + weight;
+        text += "products id " + id+"\n";
+        text += "sku " + sku+"\n";
+        text += "name " + name+"\n";
+        text += "price " + price+"\n";
+        text += "weight " + weight+ " kg"+"\n";
         return text;
     }
 
@@ -32,7 +41,7 @@ public class Products {
     public boolean equals(Object object) {
         Products products = (Products) object;
         return this.id == products.id && this.sku.equals(products.sku) && this.name.equals(products.name)
-                && this.price == products.price && this.weight==(products.weight);
+                && this.price == products.price && this.weight == (products.weight);
     }
 
     public int getId() {

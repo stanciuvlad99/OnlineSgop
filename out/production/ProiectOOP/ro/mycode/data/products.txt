@@ -1,0 +1,2 @@
+1,ABC111DEF,mouse,100,1
+2,GHI222JKL,tastatura,200,2

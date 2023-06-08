@@ -1,6 +1,7 @@
 package ro.mycode.models;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Orders {
     private int id;
@@ -11,8 +12,10 @@ public class Orders {
     private String orderAdress;
     private LocalDate orderDate;
     private String orderStatus;
+    private String type;
 
-    public Orders(int id, int customerID, int ammount, String shippingAdress, String orderEmail, String orderAdress, LocalDate orderDate, String orderStatus) {
+    public Orders(int id, int customerID, int ammount, String shippingAdress, String orderEmail, String orderAdress,
+                  LocalDate orderDate, String orderStatus,String type) {
         this.id = id;
         this.customerID = customerID;
         this.ammount = ammount;
@@ -21,13 +24,29 @@ public class Orders {
         this.orderAdress = orderAdress;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
+        this.type=type;
     }
+
+    public Orders(String text){
+        String []split=text.split(",");
+        this.type=split[0];
+        this.id=Integer.parseInt(split[0]);
+        this.customerID=Integer.parseInt(split[1]);
+        this.ammount=Integer.parseInt(split[2]);
+        this.shippingAdress=split[3];
+        this.orderEmail=split[4];
+        this.orderAdress=split[5];
+        this.orderDate=LocalDate.parse(split[6]);
+        this.orderStatus=split[7];
+
+    }
+
 
     @Override
     public String toString() {
         String text = "";
         text += "id " + id + "\n";
-        text += "customer id" + customerID + "\n";
+        text += "customer id " + customerID + "\n";
         text += "amount " + ammount + "\n";
         text += "shipping adress " + shippingAdress + "\n";
         text += "order email " + orderEmail + "\n";
@@ -41,8 +60,10 @@ public class Orders {
     public boolean equals(Object object) {
         Orders orders = (Orders) object;
         return this.id == orders.id && this.customerID == orders.customerID && this.ammount==ammount &&
-                this.shippingAdress.equals(orders.shippingAdress) && this.orderEmail && this.
+                this.shippingAdress.equals(orders.shippingAdress) && this.orderEmail.equals(orders.orderEmail) &&
+                this.orderAdress.equals(orders.orderAdress)&&this.orderDate.equals(orders.orderDate) && this.orderStatus.equals(orders.orderStatus);
     }
+
 
     public int getId() {
         return id;

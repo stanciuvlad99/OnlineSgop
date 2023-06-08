@@ -6,12 +6,20 @@ public class Admin extends User {
     private String skills;
     private String duty;
 
-    public Admin(int id, String email, String password, String fullName, int phone, String type,
+    public Admin(int id, String email, String password, String fullName, int phone,
                  int level, String skills, String duty) {
-        super(id, email, password, fullName, phone, type);
+            super(id, email, password, fullName, phone, "admin");
         this.level = level;
         this.skills = skills;
         this.duty = duty;
+    }
+
+
+    public Admin(String text){
+        super(text);
+        this.level= Integer.parseInt(text.split(",")[6]);
+        this.skills=text.split(",")[7];
+        this.duty=text.split(",")[8];
     }
 
     @Override

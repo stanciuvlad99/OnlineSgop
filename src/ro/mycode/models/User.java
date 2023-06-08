@@ -17,6 +17,21 @@ public class User {
         this.type = type;
     }
 
+    public User(String text){
+        String []split =text.split(",");
+        this.type=split[0];
+        this.id=Integer.parseInt(split[1]);
+        this.email=split[2];
+        this.password=split[3];
+        this.fullName=split[4];
+        this.phone=Integer.parseInt(split[5]);
+
+    }
+
+    public User() {
+
+    }
+
     @Override
     public String toString() {
         String text = "";
