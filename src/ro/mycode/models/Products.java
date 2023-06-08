@@ -1,12 +1,12 @@
 package ro.mycode.models;
 
-public class Products {
+public class Products implements Comparable<Products>{
 
     private int id;
     private String sku;
     private String name;
     private int price;
-    private int weight;
+    private double weight;
 
     public Products(int id, String sku, String name, int price, int weight, String description,
                     String thumbnail, String image, String category, String creteDate, int stock) {
@@ -23,7 +23,7 @@ public class Products {
         this.sku=split[1];
         this.name=split[2];
         this.price=Integer.parseInt(split[3]);
-        this.weight=Integer.parseInt(split[4]);
+        this.weight=Double.parseDouble(split[4]);
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Products {
         this.price = price;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -84,4 +84,13 @@ public class Products {
         this.weight = weight;
     }
 
+    @Override
+    public int compareTo(Products o){
+        if (this.price>o.price){
+            return 1;
+        }else if (this.price<o.price){
+            return -1;
+        }
+        return 0;
+    }
 }

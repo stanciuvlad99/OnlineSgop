@@ -3,7 +3,7 @@ package ro.mycode.models;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class Orders {
+public class Orders implements Comparable<Orders>{
     private int id;
     private int customerID;
     private int ammount;
@@ -127,5 +127,23 @@ public class Orders {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public int compareTo(Orders o) {
+        if (this.ammount>o.ammount){
+            return 1;
+        } else if (this.ammount<o.ammount) {
+            return -1;
+        }
+        return 0;
     }
 }

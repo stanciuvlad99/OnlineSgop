@@ -1,8 +1,7 @@
-package ro.mycode.viewAdmin;
+package ro.mycode.view;
 
 import ro.mycode.controllers.ControlUser;
 import ro.mycode.models.Admin;
-import ro.mycode.models.User;
 import ro.mycode.utils.Utile;
 
 public class ViewAdmin {
@@ -12,8 +11,8 @@ public class ViewAdmin {
     public ViewAdmin (){
         this.admin=admin;
         this.controlUser=new ControlUser();
-        Utile.play();
     }
+
 
 
 

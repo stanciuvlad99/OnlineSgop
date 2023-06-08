@@ -1,11 +1,15 @@
 package ro.mycode.controllers;
 
-import ro.mycode.Utils.Utile;
+import ro.mycode.comparators.CompareProductByWeight;
+import ro.mycode.comparators.CompareProductsByPrice;
+import ro.mycode.utils.Utile;
 import ro.mycode.models.Products;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ControlProducts {
+
 
     private ArrayList<Products> products;
 
@@ -19,4 +23,47 @@ public class ControlProducts {
     public void read(){
         Utile.read(products);
     }
+
+    public  Products  minProduct(){
+        return  Collections.min(products);
+    }
+
+    public Products minProductsWeight() {
+       return  Collections.min(products,new CompareProductByWeight());
+    }
+
+    public Products minProductsPrice(){
+        return Collections.min(products, new CompareProductsByPrice());
+    }
+
+    public Products findByProductsId(int productsId){
+        for (int i=0; i<this.products.size(); i++){
+            if (products.get(i).getId()==productsId){
+                return products.get(i);
+            }
+        }
+        return null;
+    }
+
+    public Products findByName(String name){
+        for (int i=0; i<this.products.size(); i++){
+            if (products.get(i).getName().equals(name)){
+                return products.get(i);
+            }
+        }
+        return null;
+    }
+
+    public int returnIdByName(String name){
+        for (int i=0;i<products.size();i++) {
+            if (products.get(i).getName().equals(name)) {
+                return products.get(i).getId();
+            }
+        }
+        return -1;
+    }
+
+
+
+
 }

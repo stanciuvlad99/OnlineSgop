@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class Customer extends User {
+public class Customer extends User{
 
     private LocalDate lastOrderDate;
 
@@ -18,6 +18,10 @@ public class Customer extends User {
         this.lastOrderDate = lastOrderDate;
         this.registerDate = registerDate;
         this.isBlocked = isBlocked;
+    }
+
+    public Customer(){
+
     }
 
     public Customer(String text){
@@ -70,5 +74,17 @@ public class Customer extends User {
 
     public void setBlocked(boolean blocked) {
         isBlocked = blocked;
+    }
+
+    @Override
+    public int compareTo(User o){
+        Customer customer= (Customer) o;
+     if (this.registerDate.compareTo(customer.getRegisterDate())>0) {
+         return 1;
+     }
+     else if (this.registerDate.compareTo(customer.getRegisterDate())<0){
+         return -1;
+     }
+     return 0;
     }
 }

@@ -1,34 +1,46 @@
-package ro.mycode.models;
+package ro.mycode.utils;
 
-public class Bag {
+public class CartItem {
 
-    private int id;
+
     private int productId;
-    private int customerId;
-    private int quantity;
+    private int ammount;
+    private CartItem cartItem;
 
-    public Bag(int id, int productId, int customerId, int quantity){
-        this.id=id;
+    public CartItem(int productId, int ammount){
         this.productId=productId;
-        this.customerId=customerId;
-        this.quantity=quantity;
-    }
+        this.ammount = ammount;
 
-    public Bag(String text){
-        String[] split=text.split(",");
-        this.id=Integer.parseInt(split[0]);
-        this.productId=Integer.parseInt(split[1]);
-        this.customerId=Integer.parseInt(split[2]);
-        this.quantity=Integer.parseInt(split[3]);
+
     }
 
     @Override
     public String toString(){
         String text="";
-        text+="id " + id + "\n";
-        text+="product id" + productId + "\n";
-        text+="customer id" + customerId + "\n";
-        text+="quantity " + quantity + "\n";
+        text+="product id " + productId + "\n";
+        text+="ammount " + ammount + "\n";
+        return text;
     }
+
+    public int getProductId(){
+        return productId;
+    }
+
+    public void setProductId(int productId){
+        this.productId=productId;
+    }
+
+    public int getAmmount(){
+        return ammount;
+    }
+
+    public void setAmmount(int ammount){
+        this.ammount = ammount;
+    }
+
+    public void add(CartItem cartItem){
+        this.cartItem.add(cartItem);
+    }
+
 
 }

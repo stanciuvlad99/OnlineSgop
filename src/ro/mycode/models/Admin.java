@@ -14,6 +14,10 @@ public class Admin extends User {
         this.duty = duty;
     }
 
+    public Admin(){
+        super();
+
+    }
 
     public Admin(String text){
         super(text);
@@ -67,4 +71,13 @@ public class Admin extends User {
         this.duty = duty;
     }
 
+    @Override
+    public int compareTo(User o){
+        if (this.level>0){
+            return -1;
+        } else if (this.level<0) {
+            return 1;
+        }
+        return 0;
+    }
 }

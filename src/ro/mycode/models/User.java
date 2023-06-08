@@ -1,6 +1,6 @@
 package ro.mycode.models;
 
-public class User {
+public class User implements Comparable<User> {
     private int id;
     private String email;
     private String password;
@@ -100,4 +100,13 @@ public class User {
 
     }
 
+    @Override
+    public int compareTo(User o) {
+        if(this.phone>o.phone){
+            return 1;
+        }else if(this.phone<o.phone){
+            return -1;
+        }
+        return 0;
+    }
 }
