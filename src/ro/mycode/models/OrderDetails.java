@@ -1,6 +1,6 @@
 package ro.mycode.models;
 
-public class OrderDetails {
+public class OrderDetails implements Comparable<OrderDetails>{
     private int id;
     private int orderId;
     private int productId;
@@ -17,6 +17,10 @@ public class OrderDetails {
         this.quantity = quantity;
     }
 
+    public OrderDetails(){
+
+    }
+
     public OrderDetails(String text){
         String []split= text.split(",");
         this.id=Integer.parseInt(split[0]);
@@ -29,7 +33,7 @@ public class OrderDetails {
 
     @Override
     public String toString(){
-        String text="\n";
+        String text="";
         text+="id " + id + "\n";
         text+="order id " + orderId+ "\n";
         text+="product id " + productId+"\n";
@@ -92,5 +96,16 @@ public class OrderDetails {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public int compareTo(OrderDetails o) {
+        OrderDetails orderDetails=o;
+        if (this.sku.compareTo(orderDetails.getSku())>0){
+            return 1;
+        } else if (this.sku.compareTo(orderDetails.getSku())<0) {
+            return -1;
+        }
+        return 0;
     }
 }

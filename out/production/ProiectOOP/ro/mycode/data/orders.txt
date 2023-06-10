@@ -1,2 +1,4 @@
-1,1,1,Bucuresti,order1@email.com,Constanta,2023-05-12,transporting
-2,2,2,Oradea,order2@email.com,Brasov,2023-01-04,canceled
+1,1,1,Bucuresti,anaionescu@email.com,Constanta,2023-05-12,transporting
+2,1,2,Bucuresti,anaionescu@email.com,Brasov,2023-01-04,canceled
+3,2,3,Calarsi,andreienache@email.com,Oltenita,2023-02-02,delivered
+4,2,4,Calarasi,andreienache@email.com,Pitesti,2023-01-19,preparing

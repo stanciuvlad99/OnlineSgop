@@ -1,6 +1,6 @@
 package ro.mycode.controllers;
 
-import ro.mycode.Utils.Utile;
+import ro.mycode.utils.Utile;
 import ro.mycode.models.Admin;
 import ro.mycode.models.Customer;
 import ro.mycode.models.User;
@@ -47,5 +47,9 @@ public class ControlUser {
     public void read() {
         Utile.read(users);
     }
+
+
+
+
 
 }
