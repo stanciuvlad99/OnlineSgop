@@ -8,8 +8,7 @@ public class Products implements Comparable<Products>{
     private int price;
     private double weight;
 
-    public Products(int id, String sku, String name, int price, int weight, String description,
-                    String thumbnail, String image, String category, String creteDate, int stock) {
+    public Products(int id, String sku, String name, int price, int weight) {
         this.id = id;
         this.sku = sku;
         this.name = name;

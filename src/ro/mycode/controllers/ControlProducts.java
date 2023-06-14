@@ -15,6 +15,10 @@ public class ControlProducts {
 
     private final String FILE_PATH="C:\\mycode\\OOP\\OnlineShop\\src\\ro\\mycode\\data\\products.txt";
 
+    public ControlProducts(ArrayList<Products> products){
+        this.products=products;
+    }
+
     public ControlProducts(){
         this.products=new ArrayList<>();
         Utile.load(FILE_PATH,"products", products);
@@ -24,9 +28,9 @@ public class ControlProducts {
         Utile.read(products);
     }
 
-    public  Products  minProduct(){
-        return  Collections.min(products);
-    }
+//    public  Products  minProduct(){
+//        return  Collections.min(products);
+//    }
 
     public Products minProductsWeight() {
        return  Collections.min(products,new CompareProductByWeight());
@@ -63,6 +67,16 @@ public class ControlProducts {
         return -1;
     }
 
+    public int nextId(){
+        if (products.size()==0){
+            return -1;
+        }
+        return products.get(products.size()-1).getId()+1;
+    }
+
+    public void add(Products products){
+        this.products.add(products);
+    }
 
 
 

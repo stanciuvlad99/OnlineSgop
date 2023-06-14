@@ -48,6 +48,25 @@ public class ControlUser {
         Utile.read(users);
     }
 
+    public ArrayList<User> findByTypeArr(String type){
+        ArrayList<User> list = new ArrayList<>();
+        for (int i=0; i<users.size(); i++){
+            if (users.get(i).getType().equals(type)){
+                list.add(users.get(i));
+            }
+        }
+        return list;
+    }
+
+    public User findBYType(String type){
+        for (int i=0; i<users.size(); i++){
+            if (users.get(i).getType().equals(type)){
+                return users.get(i);
+            }
+        }
+        return null;
+    }
+
 
 
 

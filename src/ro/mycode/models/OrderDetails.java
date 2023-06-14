@@ -17,10 +17,6 @@ public class OrderDetails implements Comparable<OrderDetails>{
         this.quantity = quantity;
     }
 
-    public OrderDetails(){
-
-    }
-
     public OrderDetails(String text){
         String []split= text.split(",");
         this.id=Integer.parseInt(split[0]);

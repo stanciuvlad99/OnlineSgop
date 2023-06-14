@@ -2,6 +2,7 @@ package ro.mycode.controllers;
 
 import ro.mycode.comparators.CompareOrderDetailsByPrice;
 import ro.mycode.comparators.CompareOrderDetailsByQuantity;
+import ro.mycode.models.Orders;
 import ro.mycode.utils.Utile;
 import ro.mycode.models.OrderDetails;
 
@@ -14,6 +15,14 @@ public class ControlOrderDetails {
 
     private final String FILE_PATH ="C:\\mycode\\OOP\\OnlineShop\\src\\ro\\mycode\\data\\orderDetails.txt";
 
+    public ControlOrderDetails(ArrayList<OrderDetails> orderDetails){
+        this.orderDetails=orderDetails;
+    }
+
+//    public OrderDetails minOrders() {
+//        return Collections.min(orderDetails);
+//    }
+
     public ControlOrderDetails(){
         this.orderDetails=new ArrayList<>();
         Utile.load(FILE_PATH,"order details", orderDetails);
@@ -21,10 +30,6 @@ public class ControlOrderDetails {
 
     public void read() {
         Utile.read(orderDetails);
-    }
-
-    public OrderDetails minOrderDetails(){
-        return Collections.min(orderDetails);
     }
 
     public OrderDetails minOrderDetailsQuantity(){
@@ -35,9 +40,9 @@ public class ControlOrderDetails {
         return Collections.min(orderDetails, new CompareOrderDetailsByPrice());
     }
 
-    public int findByProductId(int productId){
+    public int findByProductIdReturnOrderId(int productId){
         for (int i = 0 ; i<orderDetails.size(); i++){
-            if (orderDetails.get(i).getOrderId()== minOrderDetails().getOrderId()){
+            if (orderDetails.get(i).getOrderId()== productId){
                 return orderDetails.get(i).getOrderId();
             }
         }

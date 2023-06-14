@@ -3,7 +3,6 @@ package ro.mycode.view;
 import ro.mycode.controllers.ControlOrders;
 import ro.mycode.controllers.ControlOrderDetails;
 import ro.mycode.controllers.ControlProducts;
-import ro.mycode.controllers.ControlUser;
 import ro.mycode.models.*;
 import ro.mycode.utils.Cart;
 import ro.mycode.utils.CartItem;
@@ -152,7 +151,7 @@ public class ViewCustomer {
         String produs = scanner.nextLine();
         Products products = controlProducts.findByName(produs);
         if (products != null) {
-            int orderId = controlOrderDetails.findByProductId(products.getId());
+            int orderId = controlOrderDetails.findByProductIdReturnOrderId(products.getId());
             Orders orders = controlOrders.findById(orderId);
             controlOrders.remove(orders);
             System.out.println("Produsul a fost eliminat cu succes");
@@ -165,7 +164,7 @@ public class ViewCustomer {
         Scanner scanner = new Scanner(System.in);
         String product = scanner.nextLine();
         int productId=controlProducts.returnIdByName(product);
-        Orders orders = controlOrders.findByOrderIdCustomerId(controlOrderDetails.findByProductId(productId), customer.getId());
+        Orders orders = controlOrders.findByOrderIdCustomerId(controlOrderDetails.findByProductIdReturnOrderId(productId), customer.getId());
         if (orders != null) {
             int id = controlProducts.returnIdByName(product);
             System.out.println("Introduceti noua adresa de livrare");

@@ -13,14 +13,18 @@ public class ControlOrders {
 
     private final String FILE_PATH = "C:\\mycode\\OOP\\OnlineShop\\src\\ro\\mycode\\data\\orders.txt";
 
+    public ControlOrders(ArrayList<Orders> orders){
+        this.orders=orders;
+    }
+
     public ControlOrders() {
         this.orders = new ArrayList<>();
         Utile.load(FILE_PATH, "order", orders);
     }
 
-    public Orders minOrders() {
-        return Collections.min(orders);
-    }
+//    public Orders minOrders() {
+//        return Collections.min(orders);
+//    }
 
     public Orders minOrdersAmmount() {
         return Collections.min(orders, new CompareOrdersByAmmount());
