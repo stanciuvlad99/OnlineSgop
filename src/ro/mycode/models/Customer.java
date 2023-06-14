@@ -45,12 +45,12 @@ public class Customer extends User{
         return text;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        Customer customer = (Customer) object;
-        return this.lastOrderDate.equals(customer.lastOrderDate) && this.registerDate.equals(customer.registerDate)
-                && this.isBlocked == customer.isBlocked;
-    }
+//    @Override
+//    public boolean equals(Object object) {
+//        Customer customer = (Customer) object;
+//        return this.lastOrderDate.equals(customer.lastOrderDate) && this.registerDate.equals(customer.registerDate)
+//                && this.isBlocked == customer.isBlocked;
+//    }
 
     public LocalDate getLastOrderDate() {
         return lastOrderDate;

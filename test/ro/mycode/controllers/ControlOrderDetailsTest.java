@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ControlOrderDetailsTest {
 
     @Test
-    public void testFindByProductId() {
+    void testFindByProductId() {
         ArrayList<OrderDetails> orderDetails = new ArrayList<>();
         OrderDetails order = new OrderDetails("1,1,1,600,ABC333DEF,1");
         orderDetails.add(order);
@@ -21,7 +21,7 @@ class ControlOrderDetailsTest {
     }
 
     @Test
-    public void testFindByProductIdNull(){
+    void testFindByProductIdNull(){
         ArrayList<OrderDetails> orderDetails = new ArrayList<>();
         OrderDetails order = new OrderDetails("1,1,1,600,ABC333DEF,1");
         orderDetails.add(order);
@@ -29,11 +29,6 @@ class ControlOrderDetailsTest {
         int expected=-1;
 
         assertEquals(expected,controlOrderDetails.findByProductIdReturnOrderId(order.getProductId()+1));
-    }
-
-    @Test
-    void testMinOrderDetails() {
-
     }
 
     @Test
