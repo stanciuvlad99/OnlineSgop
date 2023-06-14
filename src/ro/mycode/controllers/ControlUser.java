@@ -14,6 +14,10 @@ public class ControlUser {
     private String FINAL_URL = "C:\\mycode\\OOP\\OnlineShop\\src\\ro\\mycode\\data\\users.txt";
     private ArrayList<User> users;
 
+    ControlUser(ArrayList<User> user){
+        this.users=user;
+    }
+
     public ControlUser() {
         this.users = new ArrayList<>();
         load();
@@ -58,7 +62,7 @@ public class ControlUser {
         return list;
     }
 
-    public User findBYType(String type){
+    public User findByType(String type){
         for (int i=0; i<users.size(); i++){
             if (users.get(i).getType().equals(type)){
                 return users.get(i);
@@ -67,7 +71,45 @@ public class ControlUser {
         return null;
     }
 
+    public User findByTypeEmail(String type,String email){
+        for (int i=0; i<this.users.size(); i++){
+            if (this.users.get(i).getType().equals(type) && this.users.get(i).getEmail().equals(email)){
+                return this.users.get(i);
+            }
+        }
+        return null;
+    }
 
+    public void remove(User user){
+        this.users.remove(user);
+    }
+
+    public int nextId(){
+        if (this.users.size()==0){
+            return -1;
+        }
+        return this.users.get(users.size()-1).getId()+1;
+    }
+
+    public void add(User user){
+        this.users.add(user);
+    }
+
+    public boolean checkCustomer(String type){
+        if (type.equals("customer")){
+            return true;
+        }
+        return false;
+    }
+
+    public User findByEmailPassword(String email, String password){
+        for (int i=0; i<this.users.size(); i++){
+            if (this.users.get(i).getEmail().equals(email)&&this.users.get(i).getPassword().equals(password)){
+                return this.users.get(i);
+            }
+        }
+        return null;
+    }
 
 
 

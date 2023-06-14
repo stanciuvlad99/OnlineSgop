@@ -19,20 +19,19 @@ public class ViewCustomer {
     private ControlProducts controlProducts;
     private Cart cart;
 
-    public ViewCustomer() {
+    public ViewCustomer(Customer customer) {
 
-        this.customer = new Customer("customer,1,anaionescu@email.com,pass!321,Ana Ionescu,0724597213,2023-05-12,2017-12-18,false");
+        this.customer = customer;
         this.controlOrders = new ControlOrders();
         this.controlOrderDetails = new ControlOrderDetails();
         this.controlProducts = new ControlProducts();
         this.cart = new Cart(customer.getId());
-
         play();
     }
 
     public void menu() {
-//        System.out.println("Bine ai venit " + customer.getFullName() + "!");
-//        System.out.println("");
+        System.out.println("Bine ai venit " + customer.getFullName() + "!");
+        System.out.println("");
         System.out.println("Apasati tasta 1 pentru a vedea toate produsele");
         System.out.println("Apasati tasta 2 pentru a vedea produsele comandate");
         System.out.println("Apasati tasta 3 pentru a vedea detalii despre comanda dumneavoastra");

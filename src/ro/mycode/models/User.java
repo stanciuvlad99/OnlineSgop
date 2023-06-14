@@ -25,7 +25,6 @@ public class User implements Comparable<User> {
         this.password=split[3];
         this.fullName=split[4];
         this.phone=Integer.parseInt(split[5]);
-
     }
 
     public User() {
