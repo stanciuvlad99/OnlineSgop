@@ -37,9 +37,10 @@ public class ViewCustomer {
         System.out.println("Apasati tasta 3 pentru a vedea detalii despre comanda dumneavoastra");
         System.out.println("Apasati tsata 4 pentru a adauga prdose in cos");
         System.out.println("Apasati tasta 5 pentru vedea cosul de cumparaturi");
-        System.out.println("Apasati tasta 6 pentru a comanda un nou produs");
-        System.out.println("Apasati tasta 7 pentru a anula o comanda");
-        System.out.println("Apasati tasta 8 pentru a schimba adresa de livrare");
+        System.out.println("Apasati tasta 6 pentru a elimina din cosul de cumparaturi");
+        System.out.println("Apasati tasta 7 pentru a comanda un nou produs");
+        System.out.println("Apasati tasta 8 pentru a anula o comanda");
+        System.out.println("Apasati tasta 9 pentru a schimba adresa de livrare");
     }
 
     public void play() {
@@ -68,11 +69,12 @@ public class ViewCustomer {
                     comanda();
                     break;
                 case 7:
-                    eliminareComanda();
+
                     break;
-                case 8:
-                    adresaLivrare();
+                case 8:eliminareComanda();
+
                     break;
+                case 9:adresaLivrare();
                 default:
                     break;
             }
@@ -100,7 +102,7 @@ public class ViewCustomer {
     }
 
     public void produseCos() {
-        System.out.println("Introduceti nunele produsului pe care doriti sa il adaugati in cos");
+        System.out.println("Introduceti numele produsului pe care doriti sa il adaugati in cos");
         Scanner scanner = new Scanner(System.in);
         String produs = scanner.nextLine();
         if (controlProducts.findByName(produs) != null) {
@@ -121,27 +123,6 @@ public class ViewCustomer {
     }
 
     public void comanda() {
-        System.out.println("Introduceti numele produsului");
-        Scanner scanner = new Scanner(System.in);
-        String produs = scanner.nextLine();
-        if (controlProducts.findByName(produs) != null) {
-            System.out.println("Cate produse doriti sa comandati");
-            int ammount = Integer.parseInt(scanner.nextLine());
-            System.out.println("Introduceti adresa de livrare");
-            String orderShipping = scanner.nextLine();
-            System.out.println("Introduceti adresa dumneavoastra");
-            String orderAdress = scanner.nextLine();
-            LocalDate localDate = LocalDate.now();
-            String orderStatus = "preparing";
-            String type = "order";
-            Orders orders = new Orders(controlOrders.nextId(), customer.getId(), ammount, orderShipping,
-                    customer.getEmail(), orderAdress, localDate, orderStatus, type);
-            controlOrders.add(orders);
-            System.out.println("Ati finalizat comanda cu succes");
-        } else {
-            System.out.println(produs + "nu exista in stock");
-        }
-
     }
 
     public void eliminareComanda() {
