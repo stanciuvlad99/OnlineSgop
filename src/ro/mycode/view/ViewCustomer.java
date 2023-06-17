@@ -81,6 +81,7 @@ public class ViewCustomer {
         }
     }
 
+    
     public void afisareProduse() {
         controlProducts.read();
     }
