@@ -4,6 +4,10 @@ import ro.mycode.comparators.CompareOrdersByAmmount;
 import ro.mycode.utils.Utile;
 import ro.mycode.models.Orders;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -101,5 +105,29 @@ public class ControlOrders {
         return null;
     }
 
+    public String toSave(){
+        if (this.orders.size()==0){
+            return "";
+        }
+        int i;
+        String text = "";
+        for (i=0;i<orders.size()-1;i++){
+            text+=orders.get(i).toSave()+"\n";
 
+        }
+        text+=orders.get(i).toSave();
+        return text;
+    }
+
+    public void save(String path) {
+        try {
+            File file = new File(path);
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(toSave());
+            printWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

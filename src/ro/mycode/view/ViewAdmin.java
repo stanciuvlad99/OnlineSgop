@@ -58,10 +58,10 @@ public class ViewAdmin {
                     adaugareProduse();
                     break;
                 case 4:
-                    editPret();
+
                     break;
                 case 5:
-                    eliminareProdus();
+
                     break;
                 case 6:eliminareCustomer();
                 break;
@@ -104,40 +104,11 @@ public class ViewAdmin {
             int price = Integer.parseInt(scanner.nextLine());
             System.out.println("Introduceti greutatea noului produs");
             int weight = Integer.parseInt(scanner.nextLine());
-            Products newProduct = new Products(controlProducts.nextId(), sku, produs, price, weight);
+            Products newProduct = new Products(controlProducts.nextId(), produs, price, weight);
             controlProducts.add(newProduct);
             System.out.println("Produsul a fost adaugat cu succes");
         } else {
             System.out.println("produsul exista deja");
-        }
-    }
-
-    public void editPret() {
-        System.out.println("Introduceti SKU-ul produsului");
-        Scanner scanner = new Scanner(System.in);
-        String sku = scanner.nextLine();
-        Products products = controlProducts.findBySku(sku);
-        if (products != null) {
-            System.out.println("Introduceti noul pret al produsului");
-            int price = Integer.parseInt(scanner.nextLine());
-            Products product = new Products(products.getId(), products.getSku(), products.getName(), price, products.getWeight());
-            controlProducts.updatePrice(product);
-            System.out.println("Noul pret al produsului este " + price);
-        } else {
-            System.out.println("Nu exita prudus cu SKU-ul urmator " + sku);
-        }
-    }
-
-    public void eliminareProdus(){
-        System.out.println("Introduceti SKU-ul produsului");
-        Scanner scanner = new Scanner(System.in);
-        String sku=scanner.nextLine();
-        Products products = controlProducts.findBySku(sku);
-        if (products!=null){
-            controlProducts.remove(products);
-            System.out.println("Produsul a fost eliminat cu succes");
-        }else {
-            System.out.println("Nu exita prudus cu SKU-ul urmator " + sku);
         }
     }
 

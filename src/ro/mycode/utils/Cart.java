@@ -8,6 +8,7 @@ public class Cart {
     private int customerId;
     private List<CartItem> cartItems;
 
+
     public Cart(int customerId){
         this.customerId=customerId;
         this.cartItems=new ArrayList<CartItem>();
