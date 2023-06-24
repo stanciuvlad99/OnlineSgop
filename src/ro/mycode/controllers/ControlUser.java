@@ -20,6 +20,8 @@ public class ControlUser {
         this.users=user;
     }
 
+
+
     public ControlUser() {
         this.users = new ArrayList<>();
         load();
@@ -119,7 +121,7 @@ public class ControlUser {
         }
         int i;
         String text="";
-        for (i=0; i<users.size(); i++){
+        for (i=0; i<users.size()-1; i++){
             text+=users.get(i).toSave()+"\n";
         }
         text+=users.get(i).toSave();

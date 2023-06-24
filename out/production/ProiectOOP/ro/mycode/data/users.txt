@@ -1,4 +1,6 @@
-admin,1,ionutmarian@email.com,dummypass,Ionut Marian,0721234567,1,communication/problem-solving,bugs solving
-admin,2,mariusstate@email.com,pass@123,Marius State,0727984651,2,an eye for detail/social media management, marketing
-customer,1,anaionescu@email.com,pass!321,Ana Ionescu,0724597213,2023-05-12,2017-12-18,false
-customer,2,andreienache@email.com,pass%1234,Andrei Enache,0729874562,2023-01-04,2018-01-02,true
+admin,1,ionutmarian@email.com,dummypass,Ionut Marian,721234567,1,communication/problem-solving,bugs solving
+admin,2,mariusstate@email.com,pass@123,Marius State,727984651,2,an eye for detail/social media management, marketing
+customer,1,anaionescu@email.com,pass!321,Ana Ionescu,724597213,2023-05-12,2017-12-18,false
+customer,2,andreienache@email.com,pass%1234,Andrei Enache,729874562,2023-01-04,2018-01-02,true
+admin,3,test@test.com,password,Ionut Marian,123456799,3,qwerty,qwerty
+customer,3,qwerty@test.com,password123,Vlad Andrei,54565415,2021-03-15,2019-02-03,true

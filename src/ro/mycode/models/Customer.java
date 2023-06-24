@@ -20,10 +20,6 @@ public class Customer extends User{
         this.isBlocked = isBlocked;
     }
 
-    public Customer(){
-
-    }
-
     public Customer(String text){
         super(text);
         this.lastOrderDate=LocalDate.parse(text.split(",")[6]);
@@ -89,6 +85,6 @@ public class Customer extends User{
     }
 
     public String toSave(){
-        return this.lastOrderDate+","+this.registerDate+","+this.isBlocked;
+        return super.toSave()+","+this.lastOrderDate+","+this.registerDate+","+this.isBlocked();
     }
 }

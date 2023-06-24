@@ -20,9 +20,9 @@ public class ViewCustomer {
     private ControlProducts controlProducts;
     private Cart cart;
 
-    public ViewCustomer() {
+    public ViewCustomer( Customer customer) {
 
-        this.customer = new Customer("customer,1,anaionescu@email.com,pass!321,Ana Ionescu,0724597213,2023-05-12,2017-12-18,false");
+        this.customer = customer;
         this.controlOrders = new ControlOrders();
         this.controlOrderDetails = new ControlOrderDetails();
         this.controlProducts = new ControlProducts();

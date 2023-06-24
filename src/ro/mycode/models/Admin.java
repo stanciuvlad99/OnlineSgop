@@ -14,10 +14,6 @@ public class Admin extends User {
         this.duty = duty;
     }
 
-    public Admin(){
-        super();
-
-    }
 
     public Admin(String text){
         super(text);
@@ -82,6 +78,6 @@ public class Admin extends User {
     }
 
     public String toSave(){
-        return this.level+","+this.skills+","+this.duty;
+        return super.toSave()+","+this.level+","+this.skills+","+this.duty;
     }
 }

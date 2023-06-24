@@ -92,7 +92,7 @@ public class ControlProducts {
         }
         int i;
         String text="";
-        for (i=0; i<products.size(); i++){
+        for (i=0; i<products.size()-1; i++){
             text+=products.get(i).toSave()+"\n";
         }
         text+=products.get(i).toSave();
