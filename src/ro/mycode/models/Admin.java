@@ -80,4 +80,8 @@ public class Admin extends User {
         }
         return 0;
     }
+
+    public String toSave(){
+        return this.level+","+this.skills+","+this.duty;
+    }
 }

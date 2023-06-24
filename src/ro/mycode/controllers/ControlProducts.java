@@ -5,6 +5,9 @@ import ro.mycode.comparators.CompareProductsByPrice;
 import ro.mycode.utils.Utile;
 import ro.mycode.models.Products;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -83,5 +86,29 @@ public class ControlProducts {
         this.products.remove(products);
     }
 
+    public String toSave(){
+        if (this.products.size()==0){
+            return "";
+        }
+        int i;
+        String text="";
+        for (i=0; i<products.size(); i++){
+            text+=products.get(i).toSave()+"\n";
+        }
+        text+=products.get(i).toSave();
+        return text;
+    }
+
+    public void save(String path){
+        try {
+            File file = new File(path);
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(toSave());
+            printWriter.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }

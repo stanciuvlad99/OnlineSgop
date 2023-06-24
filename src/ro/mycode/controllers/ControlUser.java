@@ -6,6 +6,8 @@ import ro.mycode.models.Customer;
 import ro.mycode.models.User;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -111,6 +113,29 @@ public class ControlUser {
         return null;
     }
 
+    public String toSave(){
+        if (users.size()==0){
+            return "";
+        }
+        int i;
+        String text="";
+        for (i=0; i<users.size(); i++){
+            text+=users.get(i).toSave()+"\n";
+        }
+        text+=users.get(i).toSave();
+        return text;
+    }
 
+    public void save(String path){
+        try {
+            File file = new File(path);
+            FileWriter fileWriter = new FileWriter(file);
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(toSave());
+            printWriter.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }

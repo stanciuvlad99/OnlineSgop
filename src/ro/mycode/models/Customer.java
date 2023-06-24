@@ -87,7 +87,7 @@ public class Customer extends User{
      }
      return 0;
     }
-    
+
     public String toSave(){
         return this.lastOrderDate+","+this.registerDate+","+this.isBlocked;
     }

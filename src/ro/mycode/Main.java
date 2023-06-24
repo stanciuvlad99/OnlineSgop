@@ -5,6 +5,7 @@ import ro.mycode.controllers.ControlOrders;
 import ro.mycode.controllers.ControlProducts;
 import ro.mycode.models.OrderDetails;
 import ro.mycode.models.Orders;
+import ro.mycode.models.Products;
 import ro.mycode.view.ViewAdmin;
 import ro.mycode.view.ViewCustomer;
 import ro.mycode.view.ViewLogin;
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
-//        OrderDetails orderDetails = new OrderDetails("1,1,1,999,999");
+        OrderDetails orderDetails = new OrderDetails("1,1,1,999,999");
 //        ControlOrderDetails controlOrderDetails = new ControlOrderDetails();
 //        controlOrderDetails.add(orderDetails);
 //        controlOrderDetails.save("C:\\mycode\\OOP\\OnlineShop\\src\\ro\\mycode\\data\\orderDetails.txt");
@@ -27,13 +28,19 @@ public class Main {
 //        controlOrders.read();
 
 
+        Products products = new Products("5,telefon,7000,0.3");
+        ControlProducts controlProducts = new ControlProducts();
+        controlProducts.add(products);
+        controlProducts.save("C:\\mycode\\OOP\\OnlineShop\\src\\ro\\mycode\\data\\products.txt");
+        controlProducts.read();
+
 
 //        ControlProducts controlProducts = new ControlProducts();
 //        System.out.println(controlProducts.minProductsWeight());
 //        System.out.println(controlProducts.minProductsPrice());
 
-        ViewCustomer viewCustomer = new ViewCustomer();
-        viewCustomer.play();
+//        ViewCustomer viewCustomer = new ViewCustomer();
+//        viewCustomer.play();
 
 
     }
