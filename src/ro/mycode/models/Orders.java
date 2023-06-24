@@ -15,7 +15,7 @@ public class Orders implements Comparable<Orders>{
     private String type;
 
     public Orders(int id, int customerID, int ammount, String shippingAdress, String orderEmail, String orderAdress,
-                  LocalDate orderDate, String orderStatus,String type) {
+                  LocalDate orderDate, String orderStatus) {
         this.id = id;
         this.customerID = customerID;
         this.ammount = ammount;
@@ -24,12 +24,10 @@ public class Orders implements Comparable<Orders>{
         this.orderAdress = orderAdress;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
-        this.type=type;
     }
 
     public Orders(String text){
         String []split=text.split(",");
-        this.type=split[0];
         this.id=Integer.parseInt(split[0]);
         this.customerID=Integer.parseInt(split[1]);
         this.ammount=Integer.parseInt(split[2]);
@@ -145,5 +143,10 @@ public class Orders implements Comparable<Orders>{
             return -1;
         }
         return 0;
+    }
+
+    public String toSave(){
+        return this.id + ","+this.customerID+","+this.ammount+","+this.shippingAdress+","+this.orderEmail+","
+                +this.orderAdress+","+this.orderDate+","+this.orderStatus;
     }
 }

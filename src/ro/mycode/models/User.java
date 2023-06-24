@@ -108,4 +108,8 @@ public class User implements Comparable<User> {
         }
         return 0;
     }
+
+    public String toSave(){
+        return this.id+","+this.password+","+this.fullName+","+this.phone+","+this.email+","+this.type;
+    }
 }

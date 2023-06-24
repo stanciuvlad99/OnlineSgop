@@ -78,21 +78,6 @@ public class ControlProducts {
         this.products.add(products);
     }
 
-    public Products findBySku(String sku) {
-        for (int i = 0; i < this.products.size(); i++) {
-            if (this.products.get(i).getSku().equals(sku)) {
-                return products.get(i);
-            }
-        }
-        return null;
-    }
-
-    public void updatePrice(Products products) {
-        Products update = findBySku(products.getSku());
-        if ((products.getPrice()==0)==false) {
-            update.setPrice(products.getPrice());
-        }
-    }
 
     public void remove(Products products){
         this.products.remove(products);

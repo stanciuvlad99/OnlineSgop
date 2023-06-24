@@ -1,4 +1,4 @@
-1,ABC111DEF,mouse,600,1.3
-2,GHI222JKL,tastatura,1100,2.3
-3,MNO333PQR,monitor,1700,0.2
-4,QWE444RTY,laptop,5600,2.5
+1,mouse,600,1.3
+2,tastatura,1100,2.3
+3,monitor,1700,0.2
+4,laptop,5600,2.5
