@@ -1,5 +1,6 @@
 package ro.mycode.controllers;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import ro.mycode.models.User;
 
@@ -157,5 +158,47 @@ class ControlUserTest {
         int expected=-1;
 
         assertEquals(expected,controlUser.nextId());
+    }
+
+    @Test
+    void testToSave(){
+        ArrayList<User> users = new ArrayList<>();
+        User user = new User("admin,1,ionutmarian@email.com,dummypass,Ionut Marian,0721234567,1,communication/problem-solving,bugs solving");
+        User user1 = new User("admin,2,mariusstate@email.com,pass@123,Marius State,0727984651,2,an eye for detail/social media management, marketing");
+        users.add(user);
+        users.add(user1);
+        ControlUser controlUser = new ControlUser(users);
+        String expected=user.toSave()+"\n"+user1.toSave();
+
+        assertEquals(expected,controlUser.toSave());
+    }
+
+    @Test
+    void testToSaveNull(){
+        ArrayList<User> users = new ArrayList<>();
+        ControlUser controlUser = new ControlUser(users);
+        String expected="";
+
+        assertEquals(expected,controlUser.toSave());
+    }
+
+    @Test
+    void testSave(){
+        ArrayList<User> users = new ArrayList<>();
+        User user = new User("admin,1,ionutmarian@email.com,dummypass,Ionut Marian,0721234567,1,communication/problem-solving,bugs solving");
+        User user1 = new User("admin,2,mariusstate@email.com,pass@123,Marius State,0727984651,2,an eye for detail/social media management, marketing");
+        users.add(user);
+        users.add(user1);
+        ControlUser controlUser = new ControlUser(users);
+        controlUser.save("C:\\mycode\\OOP\\OnlineShop\\test\\ro\\mycode\\data\\test.user.txt");
+        String expected=user.toSave()+"\n"+user1.toSave();
+
+        assertEquals(expected,controlUser.toSave());
+    }
+
+    @AfterEach
+    void clear(){
+        ControlUser controlUser = new ControlUser(new ArrayList<>());
+        controlUser.save("C:\\mycode\\OOP\\OnlineShop\\test\\ro\\mycode\\data\\test.user.txt");
     }
 }

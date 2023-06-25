@@ -1,5 +1,6 @@
 package ro.mycode.controllers;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import ro.mycode.models.Products;
 
@@ -12,10 +13,10 @@ class ControlProductsTest {
     @Test
     void testMinProductsWeight() {
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
-        Products product1 = new Products("2,GHI222JKL,tastatura,1100,2.3");
-        Products product2 = new Products("3,MNO333PQR,monitor,1700,0.2");
-        Products product3 = new Products("4,QWE444RTY,laptop,5600,2.5");
+        Products product = new Products("1,mouse,600,1.3");
+        Products product1 = new Products("2,tastatura,1100,2.3");
+        Products product2 = new Products("3,monitor,1700,0.2");
+        Products product3 = new Products("4,laptop,5600,2.5");
         products.add(product);
         products.add(product1);
         products.add(product2);
@@ -29,10 +30,10 @@ class ControlProductsTest {
     @Test
     void testMinProductsPrice() {
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
-        Products product1 = new Products("2,GHI222JKL,tastatura,1100,2.3");
-        Products product2 = new Products("3,MNO333PQR,monitor,1700,0.2");
-        Products product3 = new Products("4,QWE444RTY,laptop,5600,2.5");
+        Products product = new Products("1,mouse,600,1.3");
+        Products product1 = new Products("2,tastatura,1100,2.3");
+        Products product2 = new Products("3,monitor,1700,0.2");
+        Products product3 = new Products("4,laptop,5600,2.5");
         products.add(product);
         products.add(product1);
         products.add(product2);
@@ -46,7 +47,7 @@ class ControlProductsTest {
     @Test
     void testFindByProductsId() {
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
+        Products product = new Products("1,mouse,600,1.3");
         products.add(product);
         ControlProducts controlProducts = new ControlProducts(products);
         String expected = product.toString();
@@ -57,7 +58,7 @@ class ControlProductsTest {
     @Test
     void testFindByProductsIdNull() {
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
+        Products product = new Products("1,mouse,600,1.3");
         products.add(product);
         ControlProducts controlProducts = new ControlProducts(products);
         String expected = null;
@@ -68,7 +69,7 @@ class ControlProductsTest {
     @Test
     void testFindByName() {
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
+        Products product = new Products("1,mouse,600,1.3");
         products.add(product);
         ControlProducts controlProducts = new ControlProducts(products);
         String expected = product.toString();
@@ -79,7 +80,7 @@ class ControlProductsTest {
     @Test
     void testFindByNameNull() {
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
+        Products product = new Products("1,mouse,600,1.3");
         products.add(product);
         ControlProducts controlProducts = new ControlProducts(products);
         String expected = null;
@@ -90,7 +91,7 @@ class ControlProductsTest {
     @Test
     void testReturnIdByName() {
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
+        Products product = new Products("1,mouse,600,1.3");
         products.add(product);
         ControlProducts controlProducts = new ControlProducts(products);
         int expected = 1;
@@ -101,7 +102,7 @@ class ControlProductsTest {
     @Test
     void testReturnIdByNameNull() {
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
+        Products product = new Products("1,mouse,600,1.3");
         products.add(product);
         ControlProducts controlProducts = new ControlProducts(products);
         int expected = -1;
@@ -112,7 +113,7 @@ class ControlProductsTest {
     @Test
     void testNextId() {
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
+        Products product = new Products("1,mouse,600,1.3");
         products.add(product);
         ControlProducts controlProducts = new ControlProducts(products);
         int expected = product.getId()+1;
@@ -132,7 +133,7 @@ class ControlProductsTest {
     @Test
     void testAdd(){
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
+        Products product = new Products("1,mouse,600,1.3");
         ControlProducts controlProducts = new ControlProducts(products);
         controlProducts.add(product);
         int expected=1;
@@ -141,49 +142,56 @@ class ControlProductsTest {
     }
 
     @Test
-    void testFindBySku(){
-        ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
-        products.add(product);
-        ControlProducts controlProducts = new ControlProducts(products);
-        String expected = product.toString();
-
-        assertEquals(expected, controlProducts.findBySku(product.getSku()).toString());
-    }
-
-    @Test
-    void testFindBySkuNull(){
-        ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
-        products.add(product);
-        ControlProducts controlProducts = new ControlProducts(products);
-        String expected = null;
-
-        assertEquals(expected, controlProducts.findBySku(product.getSku()+1));
-    }
-
-    @Test
-    void testUpdatePriceBySku(){
-        ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,600,1.3");
-        products.add(product);
-        Products update= new Products("1,ABC111DEF,mouse,999,1.3");
-        ControlProducts controlProducts = new ControlProducts(products);
-        controlProducts.updatePrice(update);
-        String expected=product.toString();
-
-        assertEquals(expected,update.toString());
-    }
-
-    @Test
     void testRemove(){
         ArrayList<Products> products = new ArrayList<>();
-        Products product = new Products("1,ABC111DEF,mouse,999,1.3");
+        Products product = new Products("1,mouse,999,1.3");
         products.add(product);
         ControlProducts controlProducts = new ControlProducts(products);
         controlProducts.remove(product);
         int expected=0;
 
         assertEquals(expected, products.size());
+    }
+
+    @Test
+    void testToSave(){
+        ArrayList<Products> products = new ArrayList<>();
+        Products product = new Products("1,mouse,600,1.3");
+        Products product1 = new Products("2,tastatura,1100,2.3");
+        products.add(product);
+        products.add(product1);
+        ControlProducts controlProducts = new ControlProducts(products);
+        String expected=product.toSave()+"\n"+product1.toSave();
+
+        assertEquals(expected,controlProducts.toSave());
+    }
+
+    @Test
+    void testToSaveNull(){
+        ArrayList<Products> products = new ArrayList<>();
+        ControlProducts controlProducts = new ControlProducts(products);
+        String expected="";
+
+        assertEquals(expected,controlProducts.toSave());
+    }
+
+    @Test
+    void testSave(){
+        ArrayList<Products> products = new ArrayList<>();
+        Products product = new Products("1,mouse,600,1.3");
+        Products product1 = new Products("2,tastatura,1100,2.3");
+        products.add(product);
+        products.add(product1);
+        ControlProducts controlProducts = new ControlProducts(products);
+        controlProducts.save("C:\\mycode\\OOP\\OnlineShop\\test\\ro\\mycode\\data\\test.products.txt");
+        String expected=product.toSave()+"\n"+product1.toSave();
+
+        assertEquals(expected,controlProducts.toSave());
+    }
+
+    @AfterEach
+    void clea(){
+        ControlProducts controlProducts = new ControlProducts(new ArrayList<>());
+        controlProducts.save("C:\\mycode\\OOP\\OnlineShop\\test\\ro\\mycode\\data\\test.products.txt");
     }
 }

@@ -1,6 +1,7 @@
 package ro.mycode.controllers;
 
 import org.hamcrest.core.StringEndsWith;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import ro.mycode.models.Orders;
 
@@ -164,7 +165,7 @@ class ControlOrdersTest {
     }
 
     @Test
-    void minOrdersAmmount() {
+    void testMinOrdersAmmount() {
         ArrayList<Orders> orders = new ArrayList<>();
         Orders order= new Orders("1,1,9,Bucuresti,anaionescu@email.com,Constanta,2023-05-12,transporting");
         Orders order1 = new Orders("2,1,7,Bucuresti,anaionescu@email.com,Brasov,2023-01-04,canceled");
@@ -181,7 +182,7 @@ class ControlOrdersTest {
     }
 
     @Test
-    void editShippingAdress() {
+    void testEditShippingAdress() {
         ArrayList<Orders> orders = new ArrayList<>();
         Orders order = new Orders("1,1,1,Bucuresti,anaionescu@email.com,Constanta,2023-05-12,transporting");
         Orders orders1 = new Orders("2,1,2,Oltenita,anaionescu@email.com,Constanta,2023-05-12,transporting");
@@ -191,5 +192,49 @@ class ControlOrdersTest {
         String expected =order.getShippingAdress();
 
         assertEquals(expected, orders1.getShippingAdress());
+    }
+
+    @Test
+    void testToSave(){
+        ArrayList<Orders> orders = new ArrayList<>();
+        Orders order = new Orders("1,1,1,Bucuresti,anaionescu@email.com,Constanta,2023-05-12,transporting");
+        Orders orders1 = new Orders("2,1,2,Oltenita,anaionescu@email.com,Constanta,2023-05-12,transporting");
+        orders.add(order);
+        orders.add(orders1);
+        ControlOrders controlOrders = new ControlOrders(orders);
+        String expected=order.toSave()+"\n"+orders1.toSave();
+
+        assertEquals(expected, controlOrders.toSave());
+    }
+
+    @Test
+    void testToSaveNull(){
+        ArrayList<Orders> orders = new ArrayList<>();
+        ControlOrders controlOrders = new ControlOrders(orders);
+        controlOrders.save("C:\\mycode\\OOP\\OnlineShop\\test\\ro\\mycode\\data\\test.orders.txt");
+        String expected="";
+
+        assertEquals(expected,controlOrders.toSave());
+
+    }
+
+    @Test
+    void testSave(){
+        ArrayList<Orders> orders = new ArrayList<>();
+        Orders order = new Orders("1,1,1,Bucuresti,anaionescu@email.com,Constanta,2023-05-12,transporting");
+        Orders orders1 = new Orders("2,1,2,Oltenita,anaionescu@email.com,Constanta,2023-05-12,transporting");
+        orders.add(order);
+        orders.add(orders1);
+        ControlOrders controlOrders = new ControlOrders(orders);
+        controlOrders.save("C:\\mycode\\OOP\\OnlineShop\\test\\ro\\mycode\\data\\test.orders.txt");
+        String expected=order.toSave()+"\n"+orders1.toSave();
+
+        assertEquals(expected,controlOrders.toSave());
+    }
+
+    @AfterEach
+    void clear(){
+        ControlOrders controlOrders = new ControlOrders(new ArrayList<>());
+        controlOrders.save("C:\\mycode\\OOP\\OnlineShop\\test\\ro\\mycode\\data\\test.orders.txt");
     }
 }

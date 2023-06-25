@@ -61,14 +61,6 @@ public class ControlOrderDetails {
         return this.orderDetails.get(orderDetails.size()-1).getOrderId()+1;
     }
 
-    public OrderDetails findByProductId(int productId){
-        for (int i=0; i>this.orderDetails.size(); i++){
-            if (orderDetails.get(i).getProductId()==productId){
-                return orderDetails.get(i);
-            }
-        }
-        return null;
-    }
 
     public String toSave(){
         if (this.orderDetails.size()==0){

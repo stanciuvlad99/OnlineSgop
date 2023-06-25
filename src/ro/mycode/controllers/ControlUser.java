@@ -21,7 +21,6 @@ public class ControlUser {
     }
 
 
-
     public ControlUser() {
         this.users = new ArrayList<>();
         load();
